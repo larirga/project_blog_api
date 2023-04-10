@@ -1,13 +1,11 @@
 const Joi = require('joi');
 
-const userSchema = Joi.object({
-    displayName: Joi.string().min(8).required().label('displayName'),
+const loginSchema = Joi.object({
     email: Joi.string().required().email().label('email'),
     password: Joi.string().min(6).required().label('password'),
-    image: Joi.string(),
 }).messages({
     'string.min': '{{#label}} length must be at least {{#limit}} characters long',
     email: '{{#label}} must be a valid email',
 });
 
-module.exports = userSchema;
+module.exports = loginSchema;

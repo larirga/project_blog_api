@@ -21,7 +21,19 @@ const login = async (email, password) => {
     return user;
 };
 
+const createUser = async (displayName, email, password, image) => {
+    const user = await findByEmail(email);
+    if (user) {
+        throw errorMessage(409, 'User already registered');
+    }
+
+    const createUsers = await User.create({ displayName, email, password, image });
+
+    return createUsers;
+};
+
 module.exports = {
     findAllUsers,
     login,
+    createUser,
 };

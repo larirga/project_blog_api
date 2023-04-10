@@ -20,4 +20,21 @@ const login = async (req, res, next) => {
     }
 };
 
-module.exports = { login };
+const createUser = async (req, res, next) => {
+    try {
+        const { displayName, email, password, image } = req.body;
+
+        const user = await userService.createUser(displayName, email, password, image);
+
+        const token = generateToken(user);
+
+        return res.status(201).json({ token });
+    } catch (error) {
+        next(error);
+    }
+};
+
+module.exports = { 
+    login,
+    createUser,
+};
