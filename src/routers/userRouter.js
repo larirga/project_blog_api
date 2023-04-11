@@ -5,5 +5,6 @@ const tokenValidator = require('../middlewares/tokenValidator');
 
 router.post('/', userValidate, userController.createUser);
 router.get('/', tokenValidator, userController.getAllUsers);
+router.get('/:id', tokenValidator, userController.getIdUser);
 
 module.exports = router;
