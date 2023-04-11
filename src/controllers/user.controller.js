@@ -34,7 +34,17 @@ const createUser = async (req, res, next) => {
     }
 };
 
+const getAllUsers = async (req, res, next) => {
+    try {
+        const allUser = await userService.findAllUsers();
+        res.status(200).json(allUser);
+    } catch (error) {
+        next(error);
+    }
+};
+
 module.exports = { 
     login,
     createUser,
+    getAllUsers,
 };

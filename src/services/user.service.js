@@ -1,7 +1,7 @@
 const { User } = require('../models');
 const errorMessage = require('../utils/errorMessage');
 
-const findAllUsers = () => User.findAll();
+const findAllUsers = () => User.findAll({ attributes: ['id', 'displayName', 'email', 'image'] });
 
 const findByEmail = async (email) => {
     const user = await User.findOne({ where: { email } });
