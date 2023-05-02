@@ -7,9 +7,9 @@ const configJWT = {
     algorithm: 'HS256',
 };
 
-const generateToken = (email) => {
+const generateToken = (user) => {
     const data = {
-        email,
+        user,
     };
     const token = jwt.sign(data, secretKey, configJWT);
     return token;

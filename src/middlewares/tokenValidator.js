@@ -7,7 +7,7 @@ const tokenValidator = (req, res, next) => {
 
     const token = validateToken(req.headers.authorization);
 
-    if (!token.email) {
+    if (!token.user) {
         return res.status(401).json({ message: 'Expired or invalid token' });
     }
 

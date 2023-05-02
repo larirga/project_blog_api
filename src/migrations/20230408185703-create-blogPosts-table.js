@@ -23,11 +23,10 @@ module.exports = {
         field: 'user_id',
       },
       published: {
-        allowNull: false,
+        defaultValue: Sequelize.literal('NOW()'),
         type: Sequelize.DATE,
       },
       updated: {
-        allowNull: false,
         type: Sequelize.DATE,
       }
     })
